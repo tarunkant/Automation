@@ -9,6 +9,7 @@ try:
 	url=sys.argv[1]
 except IndexError:
 	print "Give url as command arguement"
+	exit()
 try:
 	html_page = urllib2.urlopen(url)
 	soup = BeautifulSoup(html_page)
@@ -16,5 +17,5 @@ try:
 		if(".java" in link.get('href')):
     			os.system("wget " +  url + link.get('href'))
     		
-except NameError:
-	print "Unable to read the file"
+except (NameError, urllib2.URLError):
+	print "Please correct your URL"
