@@ -1,4 +1,6 @@
 
+# I have upgraded this tool, now it won't ask for MySQL packets, check here: https://github.com/tarunkant/Gopherus
+
 dump = raw_input("Give connection packet of mysql: ")
 query = raw_input("Give query to execute: ")
 
