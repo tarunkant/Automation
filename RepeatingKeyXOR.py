@@ -21,7 +21,7 @@ for hell in list:
 
 for key in keys:
     output = ""
-    for i in range(0,len(message)-key_len):
+    for i in range(0,len(message)):
         output += chr(ord(key[i%key_len])^ord(message[i]))
     if(re.search(knowing_mes,output)):
         print key + ": \t" + output
